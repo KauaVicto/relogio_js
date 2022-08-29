@@ -41,9 +41,9 @@ let timeout = setInterval(function () {
     $('#ponteiro_hora').css({
         transform: "rotate(" + rotate_hora + "deg)"
     })
-    rotate_segundo += (6 / 100);
-    rotate_minuto += (0.1 / 100);
-    rotate_hora += ((3 / 360) / 100);
+    rotate_segundo += (6 / 10);
+    rotate_minuto += (0.1 / 10);
+    rotate_hora += ((3 / 360) / 10);
 
     if(rotate_segundo >= 360){
         rotate_segundo = 0
@@ -54,4 +54,4 @@ let timeout = setInterval(function () {
     if(rotate_hora >= 360){
         rotate_hora = 0
     }
-}, 10);
+}, 100);

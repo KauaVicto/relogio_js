@@ -31,19 +31,19 @@ body {
 }
 
 #ponteiro_hora {
-    width: 4px;
+    width: 3px;
     height: 50px;
     background-color: black;
     transform: rotate(0deg);
-    transform-origin: 2px 50px;
+    transform-origin: 50% 100%;
 }
 
 #ponteiro_minuto {
-    width: 4px;
+    width: 3px;
     height: 80px;
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(61, 61, 61);
     transform: rotate(0deg);
-    transform-origin: 2px 80px;
+    transform-origin: 50% 100%;
 }
 
 #ponteiro_segundo {
@@ -51,5 +51,5 @@ body {
     height: 80px;
     background-color: rgb(255, 0, 0);
     transform: rotate(0deg);
-    transform-origin: 0.5px 80px;
+    transform-origin: 50% 100%;
 }
