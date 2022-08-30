@@ -1,11 +1,13 @@
 $(document).ready(function () {})
 
+let data_atual = Date.now();
+let data = new Date(data_atual);
+console.log(data)
 
-let data = new Date;
-console.log(data.getMinutes())
-
-
+/* O ponto inicial do ponteiro de segundo */
 let rotate_segundo = data.getSeconds() * 6;
+
+/* O ponto inicial do ponteiro do minuto */
 let rotate_minuto = (data.getMinutes() * 6) + (data.getSeconds() * 0.1);
 
 let hora_atual = data.getHours();
@@ -13,7 +15,6 @@ if(data.getHours() >= 12){
     hora_atual -= 12;
 }
 let rotate_hora = (hora_atual * 30) + rotate_minuto / 12;
-
 
 
 $('#ponteiro_segundo').css({
@@ -30,6 +31,13 @@ $('#ponteiro_hora').css({
 
 
 let timeout = setInterval(function () {
+
+    let data_nova = Date.now();
+    let diferenca = data_nova - data_atual
+    data_atual = data_nova;
+
+    console.log(diferenca)
+
     $('#ponteiro_segundo').css({
         transform: "rotate(" + rotate_segundo + "deg)"
     })
@@ -41,9 +49,13 @@ let timeout = setInterval(function () {
     $('#ponteiro_hora').css({
         transform: "rotate(" + rotate_hora + "deg)"
     })
-    rotate_segundo += (6 / 10);
-    rotate_minuto += (0.1 / 10);
-    rotate_hora += ((3 / 360) / 10);
+    rotate_segundo += (0.006 * diferenca);
+    rotate_minuto += (0.0001 * diferenca);
+    rotate_hora += ((0.003 / 360) * diferenca);
+
+
+
+
 
     if(rotate_segundo >= 360){
         rotate_segundo = 0
@@ -54,4 +66,5 @@ let timeout = setInterval(function () {
     if(rotate_hora >= 360){
         rotate_hora = 0
     }
-}, 100);
+
+}, 1);
