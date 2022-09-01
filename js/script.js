@@ -1,4 +1,4 @@
-$(document).ready(function () {})
+$(document).ready(function () { })
 
 let data_atual = Date.now();
 let data = new Date(data_atual);
@@ -11,7 +11,7 @@ let rotate_segundo = data.getSeconds() * 6;
 let rotate_minuto = (data.getMinutes() * 6) + (data.getSeconds() * 0.1);
 
 let hora_atual = data.getHours();
-if(data.getHours() >= 12){
+if (data.getHours() >= 12) {
     hora_atual -= 12;
 }
 let rotate_hora = (hora_atual * 30) + rotate_minuto / 12;
@@ -54,17 +54,23 @@ let timeout = setInterval(function () {
     rotate_hora += ((0.003 / 360) * diferenca);
 
 
-
-
-
-    if(rotate_segundo >= 360){
+    if (rotate_segundo >= 360) {
         rotate_segundo = 0
     }
-    if(rotate_minuto >= 360){
+    if (rotate_minuto >= 360) {
         rotate_minuto = 0
     }
-    if(rotate_hora >= 360){
+    if (rotate_hora >= 360) {
         rotate_hora = 0
     }
+
+
+    /* Hora digital */
+    var hora_digital = new Date();
+    var hora = (hora_digital.getHours() < 10) ? '0' + hora_digital.getHours() : hora_digital.getHours();
+    var minuto = (hora_digital.getMinutes() < 10) ? '0' + hora_digital.getMinutes() : hora_digital.getMinutes();
+    var segundo = (hora_digital.getSeconds() < 10) ? '0' + hora_digital.getSeconds() : hora_digital.getSeconds();
+    var imprimir_hora = hora + ':' + minuto + ':' + segundo;
+    $('#hora_digital').text(imprimir_hora);
 
 }, 1);
